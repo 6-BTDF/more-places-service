@@ -1,40 +1,56 @@
-# Project Name
+# Herkshire Bathaway Timeshare - More Places To Stay Service
 
-> AirBnB
+> Project description
 
 ## Related Projects
 
-  - https://github.com/spicy-boiz/reservations-service
-  - https://github.com/spicy-boiz/photo-carousel-service
-  - https://github.com/spicy-boiz/places-to-stay-service
-  - https://github.com/spicy-boiz/reviews
+  - https://github.com/6-BTDF/reservations-service
+  - https://github.com/6-BTDF/ImageCarousel-Service
+  - https://github.com/6-BTDF/reviews-service
 
 ## Table of Contents
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+- [Usage](#Usage)
+  - [Create](#Adding_Related_Properties)
+  - [Read](#Reading_Listings)
+  - [Update](#Updating_Reviews)
+  - [Delete](#Deleting_Reviews)
 
 ## Usage
 
-"npm run server-prod" : runs the express server
-"npm run react-dev" : compiles components and watches for changes
+> Some usage instructions
 
-## Requirements
+This more-places-to-stay service utilizes a RESTful API architecture to retrieve and modify database-hosted, site-critical information. Syntax and routes conform to common sense REST standards.
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
+### Adding_Related_Properties
 
-- Node 6.13.0
-- etc
+> POST: '/api/:id/places'
 
-## Development
+Used to add a listing to an existing listing's collection of related properties.
 
-### Installing Dependencies
+Given a listing id and the related listing in the POST body, this path will add a listing related by geolocation to a particular listing's collection of related properties.
 
-From within the root directory:
+### Reading_Related_Properties
 
-```sh
-npm install -g webpack
-npm install
-```
+> GET: '/api/:id/places'
+
+Used to retrieve a specific  **listing's** related properties.
+
+Given a listing id, this call will return a listing with an array of its associated listings.
+
+### Updating_Related_Properties
+
+> PUT: '/api/:id/places/'
+
+Used to update the collection of **related properties** for a particular listing.
+
+Given a specific listing, this route will re-order it's collection of related properties.
+
+### Deleting_Related_Properties
+
+> DELETE: '/api/:id/places/:id'
+
+Used to delete a **review** for a particular listing.
+
+Given a specific listing and related property, this will delete the related property in question.
 
