@@ -13,8 +13,8 @@
 - [Usage](#Usage)
   - [Create](#Adding_Related_Properties)
   - [Read](#Reading_Listings)
-  - [Update](#Updating_Reviews)
-  - [Delete](#Deleting_Reviews)
+  - [Update](#Updating_Related_Properties)
+  - [Delete](#Deleting_Related_Properties)
 
 ## Usage
 
