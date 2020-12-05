@@ -1,6 +1,6 @@
 /* eslint-disable no-plusplus */
 const faker = require('faker');
-const listingPictures = require('./listingsPictures.js');
+const listingPictures = require('../listingsPictures.js');
 
 const roomTypes = ['Entire Place', 'Priavate Room', 'Shared Room'];
 
