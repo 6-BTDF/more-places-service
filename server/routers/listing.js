@@ -14,6 +14,37 @@ router.route('/api/:id/places')
         res.status(200).json(data);
       }
     });
-  });
+  })
+  .put((req, res) => {
+    const { id } = req.params;
+    listingController.update(id, (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.status(200).json(data);
+      }
+    })
+  })
+
+router.route('/api/:id/places/:id')
+  .delete((req, res) => {
+    const { id } = req.params;
+    listingController.delete(id, (err, data) => {
+      if (err) {
+        console.log(err)
+      } else {
+        res.status(200).json(data);
+      }
+    })
+  })
+  .post((req, res) => {
+    listingController.create(req.body, (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.status(201);
+      }
+    })
+  })
 
 module.exports = router;
