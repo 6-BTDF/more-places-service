@@ -13,7 +13,11 @@
     "test": "jest specs/jest.test.js specs/enzyme.test.jsx",
     "seed": "node seed.js",
     "server-dev": "nodemon server/index.js",
-    "server-prod": "node server/index.js"
+    "server-prod": "node server/index.js",
+    "listings-generator": "node CSV/writers/listingsTable.js",
+    "similarListings-generator": "node CSV/writers/similarListingsTable.js",
+    "users-generator": "node CSV/writers/usersTable.js",
+    "locations": "node /home/mcc4b3/Desktop/131/SDC/more-places-service/locationCreator.js"
   },
   "dependencies": {
     "axios": "^0.21.0",
@@ -25,7 +29,8 @@
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "zipcodes": "^8.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",

@@ -3,7 +3,7 @@ const fs = require('fs');
 const writeListingLine = require('../dataGen/listingCsvLine.js');
 
 function writeTenMillionTimes(writer, encoding, cb) {
-  let i = 1000;
+  let i = 10000000;
   let id = 0;
   // eslint-disable-next-line no-use-before-define
   write();
@@ -25,12 +25,14 @@ function writeTenMillionTimes(writer, encoding, cb) {
     if (i > 0) {
       // Had to stop early!
       // Write some more once it drains.
-      writer.cone('drain', write);
+      writer.once('drain', write);
     }
   }
 }
 
-const writeListingFile = fs.createWriteStream('./listings.csv');
+const writeListingFile = fs.createWriteStream('/home/mcc4b3/Desktop/131/SDC/more-places-service/CSV/listings.csv');
+const colNames = 'id,bedCount,pictureURL,listingName,city,state,zip,costPerNight,stars,reviewCount,roomType,userID\n';
+writeListingFile.write(colNames);
 
 writeTenMillionTimes(writeListingFile, 'utf-8', () => {
   writeListingFile.end();
