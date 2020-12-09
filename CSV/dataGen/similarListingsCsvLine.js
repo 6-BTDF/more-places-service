@@ -7,8 +7,8 @@ const genRandomNum = (min, max) => Math.floor((Math.random() * (max - min)) + mi
 // generate random listingID for similarity listing per similar listing
 const relatedID = () => genRandomNum(1, 10000000);
 // generate weight for similar listing
-const weight = () => genRandomNum(1, 5);
+const weight = () => genRandomNum(1, 6);
 
-const writeSimilarListingsCSVLine = (id, j) => `${id},${j},${relatedID()},${weight()}\n`;
+const writeSimilarListingsCSVLine = (totalID, id, j) => `${totalID},${id},${j},${relatedID()},${weight()}\n`;
 
 module.exports = writeSimilarListingsCSVLine;

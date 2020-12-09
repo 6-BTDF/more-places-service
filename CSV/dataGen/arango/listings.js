@@ -1,7 +1,7 @@
 /* eslint-disable no-plusplus */
 const faker = require('faker');
-const listingPictures = require('../listingsPictures.js');
-const locations = require('../../locations.js');
+const listingPictures = require('../../listingsPictures.js');
+const locations = require('../../../locations.js');
 
 const roomTypes = ['Entire Place', 'Private Room', 'Shared Room'];
 
@@ -25,13 +25,56 @@ const reviewCount = () => genRandomNum(10, 1000);
 const roomType = () => roomTypes[genRandomNum(0, 2)];
 // generate userID
 const userID = () => genRandomNum(1, 5000000);
+// generate random lisstingID
+const makeListingId = () => genRandomNum(1, 10000000);
+// generate random weight for similarListings
+const weight = () => genRandomNum(1, 6);
 
-const writeListingCSVLine = (id) => {
+const createSim = (id) => (
+  {
+    listingId: makeListingId(),
+    weight: weight(),
+  }
+);
+
+const similarListings = () => {
+  let num = 12;
+  const result = {};
+  let idCount = 1;
+  while (num > 0) {
+    result[idCount] = (createSim(idCount));
+    idCount++;
+    num--;
+  }
+  return result;
+};
+
+const fullListingCreator = (id) => {
   const fullLocation = locationObj();
   const { city } = fullLocation;
   const { state } = fullLocation;
   const { zip } = fullLocation;
-  return `${id},${bedCount()},${pictureURL()},${listingName()},${city},${state},${zip},${costPerNight()},${stars()},${reviewCount()},${roomType()},${userID()}\n`;
+
+  const result = {
+    id,
+    listingName: listingName(),
+    pictureURL: pictureURL(),
+    city,
+    state,
+    zip,
+    stars: stars(),
+    reviewCount: reviewCount(),
+    roomType: roomType(),
+    bedCount: bedCount(),
+    costPerNight: costPerNight(),
+    user: {
+      id: userID(),
+      name: faker.internet.userName(),
+    },
+    similarListings: similarListings(),
+  };
+
+  return `${JSON.stringify(result)}\n`;
 };
 
-module.exports = writeListingCSVLine;
+module.exports = fullListingCreator;
