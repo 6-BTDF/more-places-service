@@ -32,17 +32,17 @@ const weight = () => genRandomNum(1, 6);
 
 const createSim = (id) => (
   {
-    listingId: makeListingId(),
+    listingId: JSON.stringify(makeListingId()),
     weight: weight(),
   }
 );
 
 const similarListings = () => {
   let num = 12;
-  const result = {};
+  const result = [];
   let idCount = 1;
   while (num > 0) {
-    result[idCount] = (createSim(idCount));
+    result.push(createSim(idCount));
     idCount++;
     num--;
   }
@@ -56,7 +56,7 @@ const fullListingCreator = (id) => {
   const { zip } = fullLocation;
 
   const result = {
-    id,
+    _key: JSON.stringify(id),
     listingName: listingName(),
     pictureURL: pictureURL(),
     city,
@@ -67,10 +67,7 @@ const fullListingCreator = (id) => {
     roomType: roomType(),
     bedCount: bedCount(),
     costPerNight: costPerNight(),
-    user: {
-      id: userID(),
-      name: faker.internet.userName(),
-    },
+    userId: JSON.stringify(userID()),
     similarListings: similarListings(),
   };
 

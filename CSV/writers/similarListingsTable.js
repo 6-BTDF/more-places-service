@@ -19,6 +19,7 @@ function writeTenMillionTimes(writer, encoding, cb) {
         if (i === 0) {
           // Last time!
           writer.write(data, encoding, cb);
+          totalID++;
         } else {
           // see if we should continue, or wait.
           // don't pass the callback, because we're not done yet.

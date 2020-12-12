@@ -15,11 +15,12 @@
     "server-dev": "nodemon server/index.js",
     "server-prod": "node server/index.js",
     "listings-generator": "node CSV/writers/listingsTable.js",
-    "similarListings-generator": "node CSV/writers/similarListingsTable.js",
+    "similarListings-generator": "node /home/mcc4b3/Desktop/131/SDC/more-places-service/CSV/writers/similarListingsTable.js",
     "users-generator": "node CSV/writers/usersTable.js",
     "locations": "node /home/mcc4b3/Desktop/131/SDC/more-places-service/locationCreator.js"
   },
   "dependencies": {
+    "arangojs": "^7.2.0",
     "axios": "^0.21.0",
     "csv-write-stream": "^2.0.0",
     "express": "^4.17.1",
