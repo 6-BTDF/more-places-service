@@ -1,12 +1,4 @@
-/* eslint-disable */
-const mongoose = require('mongoose');
-const faker = require('faker');
-const { PlaceModel } = require('./db/controllers/place.js');
-const { ListingModel } = require('./db/controllers/listing.js');
-
-mongoose.connect('mongodb://localhost/listings');
-
-const pictureURLs = [
+module.exports = [
   'https://hrsf131-fec.s3-us-west-1.amazonaws.com/aaron-huber-oMOx_wV6mLQ-unsplash.jpg',
   'https://hrsf131-fec.s3-us-west-1.amazonaws.com/arcwind--OKp-rhSWE4-unsplash.jpg',
   'https://hrsf131-fec.s3-us-west-1.amazonaws.com/deborah-cortelazzi-gREquCUXQLI-unsplash.jpg',
@@ -110,45 +102,5 @@ const pictureURLs = [
   'https://ailpupimages.s3-us-west-1.amazonaws.com/SDC+pics/Traditional-style-suburban-home-shutterstock_398991412-823eff-1024x546.jpg',
   'https://ailpupimages.s3-us-west-1.amazonaws.com/SDC+pics/uk-modern-houses-book03.jpg',
   'https://ailpupimages.s3-us-west-1.amazonaws.com/SDC+pics/we-buy-houses-in-Michigan.jpg',
-  'https://ailpupimages.s3-us-west-1.amazonaws.com/SDC+pics/Webp.net-compress-image.jpg'
-]
-
-const seedDb = () => {
-  const listings = [];
-  let i = 0;
-  while (i < 100) {
-    const newListing = new ListingModel({
-      listingID: i,
-      listingName: faker.address.streetName(),
-      morePlacesID: [],
-    });
-    let j = 0;
-    while (j < 12) {
-      const newPlace = new PlaceModel({
-        listingID: Math.floor(Math.random() * 100),
-        pictureURL: pictureURLs[Math.floor(Math.random() * pictureURLs.length)],
-        locationName: faker.address.streetName(),
-        liked: false,
-        score: parseFloat(((Math.random() * 5) + 1).toFixed(2)),
-        reviewCount: Math.floor(Math.random() * 200),
-        roomType: faker.commerce.productName(),
-        roomName: faker.commerce.productName(),
-        bedCount: Math.floor(Math.random() * 2) + 1,
-        costPerNight: Math.floor(Math.random() * 200) + 30,
-      });
-      newListing.morePlacesID.push(newPlace);
-      j += 1;
-    }
-    listings.push(newListing);
-    i += 1;
-  }
-  ListingModel.create(listings, (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      mongoose.disconnect();
-    }
-  });
-};
-
-seedDb();
+  'https://ailpupimages.s3-us-west-1.amazonaws.com/SDC+pics/Webp.net-compress-image.jpg',
+];

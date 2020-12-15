@@ -30,3 +30,10 @@ coverage
 build/
 dist/
 
+##CSV
+*.csv
+
+arangoJSON
+
+##NewRelic
+newrelic.js

@@ -28,7 +28,17 @@ This more-places-to-stay service utilizes a RESTful API architecture to retrieve
 
 Used to add a listing to an existing listing's collection of related properties.
 
-Given a listing id and the related listing in the POST body, this path will add a listing related by geolocation to a particular listing's collection of related properties.
+####Body: JSON Object
+{
+  bedCount (int),
+  pictureURL (string),
+  locationName (string),
+  costPerNight (int),
+  score (int),
+  reviewCount (int),
+  roomType (string),
+  userID (int)
+}
 
 ### Reading_Related_Properties
 
@@ -36,13 +46,38 @@ Given a listing id and the related listing in the POST body, this path will add 
 
 Used to retrieve a specific  **listing's** related properties.
 
+####Body: JSON Object
+{
+  id (int),
+  bedCount (int),
+  pictureURL (string),
+  locationName (string),
+  costPerNight (int),
+  score (int),
+  reviewCount (int),
+  roomType (string),
+  userID (int)
+}
+
 Given a listing id, this call will return a listing with an array of its associated listings.
 
 ### Updating_Related_Properties
 
-> PUT: '/api/:id/places/'
+> PATCH: '/api/:id/places/'
 
-Used to update the collection of **related properties** for a particular listing.
+Used to update the collection of **related properties** for a particular listing. Any updated field except listing ID
+
+####Body: JSON Object
+{
+  bedCount,
+  pictureURL,
+  locationName,
+  costPerNight,
+  score,
+  reviewCount,
+  roomType,
+  userID
+}
 
 Given a specific listing, this route will re-order it's collection of related properties.
 

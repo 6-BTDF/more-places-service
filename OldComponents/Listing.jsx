@@ -26,7 +26,7 @@ class ListingOld extends React.Component {
 
   getListing(path) {
     console.log(path);
-    axios.get(`/api${path}places`)
+    axios.get(`/api${path}morePlaces`)
     .then((res) => {
       console.log(res);
       this.setState({ // this triggers a re-render
