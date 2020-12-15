@@ -37,7 +37,7 @@ class ListingRewrite extends React.Component{
     super(props);
 
     this.state = {
-      listing: {},
+      similarListings: [],
       activeIndex: 0,
       translate: 0,
       transition: 0.45,
@@ -52,10 +52,11 @@ class ListingRewrite extends React.Component{
   }
 
   getListing(path) {
-    axios.get(`/api${path}places`)
+    axios.get(`/api${path}morePlaces`)
     .then((res) => {
+      console.log(res.data);
       this.setState({ // this triggers a re-render
-        listing: res.data[0],
+        similarListings: res.data,
       })
     })
     .catch((err) => {
@@ -64,7 +65,7 @@ class ListingRewrite extends React.Component{
   }
 
   moveLeft(event) {
-    const places = this.state.listing.morePlacesID;
+    const places = this.state.similarListings;
     const {activeIndex} = this.state;
     const leftIndex = activeIndex > 0 ? activeIndex - 1 : places.length - 1;
     this.setState({
@@ -74,7 +75,7 @@ class ListingRewrite extends React.Component{
   }
 
   moveRight(event) {
-    const places = this.state.listing.morePlacesID;
+    const places = this.state.similarListings;
     const {activeIndex} = this.state;
     const rightIndex = activeIndex === places.length - 1 ? 0 : activeIndex + 1;
     this.setState({
@@ -84,7 +85,7 @@ class ListingRewrite extends React.Component{
   }
 
   render() {
-    const places = this.state.listing.morePlacesID;
+    const places = this.state.similarListings;
     const {activeIndex, translate, transition} = this.state;
     if (!places) {
       return null;

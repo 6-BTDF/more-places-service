@@ -31,7 +31,7 @@ const ScoreAndReviewSectionInner = styled.span`
 `;
 
 const ScoreAndReviewSectionComponent = ({props}) => {
-  const {score} = props.place;
+  const {stars} = props.place;
   const {reviewCount} = props.place;
   return (
     <ScoreAndReviewSectionWrapper>
@@ -42,7 +42,7 @@ const ScoreAndReviewSectionComponent = ({props}) => {
           <span className='placeScore' style={{
             color: 'rgb(34, 34, 34)'
           }}>
-            {score.toFixed(2)}
+            {stars}
           </span>
           <span className='placeReview' style={{
             color: 'rgb(113, 113, 113)'

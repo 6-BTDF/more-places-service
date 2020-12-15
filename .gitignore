@@ -34,3 +34,6 @@ dist/
 *.csv
 
 arangoJSON
+
+##NewRelic
+newrelic.js

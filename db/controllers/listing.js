@@ -1,8 +1,21 @@
 const { Database, aql } = require('arangojs');
 
-const db = new Database();
+const db = new Database({
+  agentOptions: {
+    maxSockets: 24,
+  },
+  LoadBalancingStrategy: 'ROUND_ROBIN',
+  auth: {
+    password: '',
+    username: '',
+  },
+  QueryOptions: {
+    stream: true,
+  },
+});
+
 db.useDatabase('morePlaces');
-db.useBasicAuth('root', 'gangogango001');
+
 const listings = db.collection('listings');
 
 const getSimilarListings = async (listingId, callback) => {
@@ -12,9 +25,9 @@ const getSimilarListings = async (listingId, callback) => {
       FOR l IN ${listings}
         FILTER l._key == ${listingId}
         FOR s IN l.similarListings
-        FOR k IN ${listings}
-          FILTER s.listingId == k._key
-          RETURN k
+          FOR k in ${listings}
+            FILTER s.listingId == k._key
+            RETURN k
     `);
     // eslint-disable-next-line no-restricted-syntax
     for await (const sim of similars) {
