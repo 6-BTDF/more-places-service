@@ -4,10 +4,10 @@ const db = new Database({
   agentOptions: {
     maxSockets: 24,
   },
-  LoadBalancingStrategy: 'ROUND_ROBIN',
+  loadBalancingStrategy: 'ROUND_ROBIN',
   auth: {
-    password: '',
-    username: '',
+    password: 'gangogango001',
+    username: 'root',
   },
   QueryOptions: {
     stream: true,
