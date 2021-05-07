@@ -2,6 +2,9 @@
 
 > A "Similar Listings" component for a property rental company. This project utilized a completed front-end component and built a scalable back end that is able to handle over 2000 requests per second (RPS) locally, and about 1500 RPS when deployed to a horizontally scaled EC2 cluster load balanced via NGINX.
 
+## Stress Test Screenshots
+<img src="https://herkshirebath.s3-us-west-1.amazonaws.com/Screenshot+from+2021-05-07+16-41-20.png" height="500">
+
 ## Related Projects
 
   - https://github.com/6-BTDF/reservations-service
