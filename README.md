@@ -1,6 +1,6 @@
-# Herkshire Bathaway Timeshare - More Places To Stay Service
+# Herkshire Bathaway - More Places To Stay Service
 
-> Project description
+> A "Similar Listings" component for a property rental company. This project utilized a completed front-end component and built a scalable back end that is able to handle over 2000 requests per second (RPS) locally, and about 1500 RPS when deployed to a horizontally scaled EC2 cluster load balanced via NGINX.
 
 ## Related Projects
 
